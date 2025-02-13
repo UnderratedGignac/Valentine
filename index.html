@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cat Lover's Surprise</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Dancing+Script:wght@700&display=swap"
+		rel="stylesheet">
+
+	<!-- Add Dancing Script and Poppins fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--pink: #ff69b4;
+			--lavender: #f3e5f5;
+			--peach: #fff0f5;
+			--light-pink: #ffe4e1;
+			--heart-size: 150px;
+			--confetti-colors: #ff69b4, #ffb6c1, #ffe4e1, #f3e5f5;
+
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			background-image: url('images/back.jpg');
+			background-size: cover;
+			/* Ensure the image covers the entire background */
+			background-position: center;
+			/* Center the background image */
+			background-repeat: no-repeat;
+			/* Prevent the image from repeating */
+			font-family: 'Comic Neue', cursive;
+			overflow-x: hidden;
+			overflow-y: hidden;
+			position: relative;
+		}
+
+		.container {
+			text-align: center;
+			padding: 2rem;
+			position: relative;
+			z-index: 2;
+		}
+
+		h1 {
+			color: var(--light-pink);
+			/* Deeper pink for h1 */
+			font-size: 4rem;
+			margin: 1rem 0;
+			font-family: 'Dancing Script', cursive;
+			/* Romantic handwritten font */
+			text-shadow: 2px 2px 6px var(--soft-shadow);
+			/* Soft pink glow */
+			animation: bounce 2s infinite;
+			/* Bouncy animation */
+			letter-spacing: 2px;
+			/* Spacing between letters */
+			text-transform: capitalize;
+			/* Elegant capitalization */
+		}
+
+		p {
+			font-size: 2rem;
+			color: var(--light-pink);
+			/* Dark rose pink for p */
+			margin: 1.5rem 0;
+			font-family: 'Poppins', sans-serif;
+			/* Modern sans-serif font */
+			text-shadow: 1px 1px 3px rgba(194, 24, 91, 0.3);
+			/* Subtle shadow with dark rose */
+			letter-spacing: 1px;
+			/* Spacing between letters */
+			line-height: 1.5;
+			/* Improved readability */
+		}
+
+		/* Keyframes for bouncy animation */
+		@keyframes bounce {
+
+			0%,
+			100% {
+				transform: translateY(0);
+				/* Original position */
+			}
+
+			50% {
+				transform: translateY(-20px);
+				/* Move up slightly */
+			}
+		}
+
+		:root {
+			--valentine-red: rgba(255, 64, 64, 0.8);
+			/* Valentine's Red with transparency */
+			--soft-pink: rgba(255, 182, 193, 0.8);
+			/* Soft pink with transparency */
+			--pink-shadow: rgba(255, 105, 180, 0.4);
+			/* Subtle pink shadow */
+		}
+
+		#valentineButton {
+			background: rgba(255, 182, 193, 0.5);
+			/* Light pink with transparency */
+			color: white;
+			/* White text for contrast */
+			border: none;
+			padding: 0.5rem 1.5rem;
+			/* Compact padding */
+			font-size: 1.2rem;
+			/* Slightly smaller font size */
+			border-radius: 20px;
+			/* Rounded edges */
+			cursor: pointer;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			/* Smooth transitions */
+			font-family: 'Dancing Script', cursive;
+			/* Romantic handwritten font */
+			text-transform: capitalize;
+			/* Elegant capitalization */
+			letter-spacing: 1px;
+			/* Spacing between letters */
+			position: relative;
+			z-index: 10;
+			outline: none;
+			/* Remove default outline */
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			/* Subtle shadow for depth */
+		}
+
+		#valentineButton:hover {
+			transform: scale(1.1);
+			/* Slightly enlarge on hover */
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+			/* Enhanced shadow on hover */
+		}
+
+		.center-heart {
+			position: absolute;
+			top: 55%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 1;
+			animation: heartbeat 1s infinite;
+			/* Add this line for heartbeat effect */
+		}
+
+		.center-heart img {
+			width: var(--heart-size);
+			filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+		}
+
+		/* Keyframes for heartbeat animation */
+		@keyframes heartbeat {
+
+			0%,
+			100% {
+				transform: translate(-50%, -50%) scale(1);
+				/* Original size */
+			}
+
+			50% {
+				transform: translate(-50%, -50%) scale(1.2);
+				/* Slightly larger */
+			}
+		}
+
+		.center-image {
+			position: absolute;
+			bottom: -100px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 250px;
+			z-index: 999;
+			animation: float 3s ease-in-out infinite;
+			/* Add this line for floating effect */
+		}
+
+		/* Keyframes for floating animation */
+		@keyframes float {
+
+			0%,
+			100% {
+				transform: translateX(-50%) translateY(0);
+				/* Start and end at the original position */
+			}
+
+			50% {
+				transform: translateX(-50%) translateY(-20px);
+				/* Move up slightly */
+			}
+		}
+
+		.confetti-container,
+		.falling-hearts-container {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			z-index: 4;
+		}
+
+		.confetti {
+			position: absolute;
+			width: 12px;
+			height: 12px;
+			background: var(--pink);
+			animation: confetti-fall 3s linear infinite;
+			border-radius: 3px;
+		}
+
+		.falling-hearts {
+			position: absolute;
+			animation: fall linear infinite;
+		}
+
+		.falling-hearts img {
+			width: 40px;
+			opacity: 0.7;
+		}
+
+		@keyframes float {
+
+			0%,
+			100% {
+				transform: translate(-50%, -50%) translateY(0);
+			}
+
+			50% {
+				transform: translate(-50%, -50%) translateY(-20px);
+			}
+		}
+
+		@keyframes confetti-fall {
+			0% {
+				transform: translateY(-100vh) rotate(0deg);
+			}
+
+			100% {
+				transform: translateY(100vh) rotate(360deg);
+			}
+		}
+
+		@keyframes fall {
+			0% {
+				transform: translateY(-100vh);
+			}
+
+			100% {
+				transform: translateY(100vh);
+			}
+		}
+
+		/* Explosion animation styles */
+		.explosion-container {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			pointer-events: none;
+			z-index: 5;
+		}
+
+		.heart {
+			position: absolute;
+			animation: explode 1s ease-out forwards;
+		}
+
+		.heart img {
+			width: 40px;
+			animation: pulse 0.5s ease-in-out infinite;
+		}
+
+		@keyframes explode {
+			0% {
+				transform: translate(0, 0) scale(1);
+				opacity: 1;
+			}
+
+			100% {
+				transform: translate(var(--x), var(--y)) scale(0);
+				opacity: 0;
+			}
+		}
+
+		@keyframes pulse {
+
+			0%,
+			100% {
+				transform: scale(1);
+			}
+
+			50% {
+				transform: scale(1.2);
+			}
+		}
+
+		/* Alert Box Styles */
+		.valentine-alert {
+			position: fixed;
+			top: 25%;
+			left: 35%;
+			background: rgba(255, 105, 180, 0.3);
+			/* Transparent pink background */
+			color: white;
+			padding: 2rem;
+			border-radius: 20px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+			z-index: 10;
+			animation: fadeIn 1s ease-in-out;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-width: 300px;
+			backdrop-filter: blur(10px);
+			/* Frosted glass effect */
+		}
+
+		.valentine-alert h2 {
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+		}
+
+		.valentine-alert p {
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+		}
+
+		.valentine-alert button {
+			background: rgba(255, 182, 193, 0.7);
+			/* Light pink with transparency */
+			color: white;
+			border: none;
+			padding: 0.5rem 1.5rem;
+			font-size: 1.2rem;
+			border-radius: 20px;
+			cursor: pointer;
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.valentine-alert button:hover {
+			transform: scale(1.1);
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;
+				transform: scale(0.9);
+			}
+
+			100% {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+
+		@keyframes bounce {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-20px);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>You're Purr-fect! </h1>
+		<p>Will you be my Hello-Kitty This Valentine? </p>
+		<button id="valentineButton">Yes!</button>
+	</div>
+	<div class="center-heart">
+		<img src="images/heart.png" alt="Center Heart">
+	</div>
+	<img src="images/batman_hellokitty-removebg-preview.png" alt="Hello Kitty Batman" class="center-image">
+	<div class="confetti-container"></div>
+	<div class="falling-hearts-container"></div>
+
+	<script>
+		// Confetti generator
+		const confettiColors = getComputedStyle(document.documentElement)
+			.getPropertyValue('--confetti-colors')
+			.split(', ')
+			.map(color => color.trim());
+
+		function createConfetti() {
+			const container = document.querySelector('.confetti-container');
+			for (let i = 0; i < 50; i++) {
+				const confetti = document.createElement('div');
+				confetti.classList.add('confetti');
+				confetti.style.left = `${Math.random() * 100}vw`;
+				confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+				confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
+				container.appendChild(confetti);
+			}
+		}
+
+		// Falling hearts generator
+		function createFallingHearts() {
+			const container = document.querySelector('.falling-hearts-container');
+			for (let i = 0; i < 20; i++) {
+				const heart = document.createElement('div');
+				heart.classList.add('falling-hearts');
+				const img = document.createElement('img');
+				img.src = 'images/heart.png';
+				heart.appendChild(img);
+				heart.style.left = `${Math.random() * 100}vw`;
+				heart.style.animationDuration = `${Math.random() * 5 + 3}s`;
+				container.appendChild(heart);
+			}
+		}
+
+		// Explosion effect
+		function createExplosion() {
+			const explosionContainer = document.createElement('div');
+			explosionContainer.classList.add('explosion-container');
+			document.body.appendChild(explosionContainer);
+
+			for (let i = 0; i < 30; i++) {
+				const heart = document.createElement('div');
+				heart.classList.add('heart');
+				const img = document.createElement('img');
+				img.src = 'images/heart.png';
+				heart.appendChild(img);
+
+				const angle = (i / 30) * Math.PI * 2;
+				const radius = Math.random() * 200 + 100;
+				const x = radius * Math.cos(angle);
+				const y = radius * Math.sin(angle);
+
+				heart.style.setProperty('--x', `${x}px`);
+				heart.style.setProperty('--y', `${y}px`);
+
+				explosionContainer.appendChild(heart);
+			}
+
+			setTimeout(() => {
+				explosionContainer.remove();
+			}, 1000);
+		}
+
+		// Button click event
+		document.getElementById('valentineButton').addEventListener('click', () => {
+			createExplosion();
+			createConfetti();
+			createFallingHearts();
+
+			setTimeout(() => {
+				const alertHTML = `
+                <div class="valentine-alert">
+                    <h2>Date at 6 PM! </h2>
+                    <p>Let's make it meow-gical! 🎀</p>
+                    <button onclick="this.parentElement.remove()"> Purrfect! </button>
+                </div>`;
+				document.body.insertAdjacentHTML('beforeend', alertHTML);
+			}, 800);
+		});
+
+		// Initialize falling hearts and confetti on page load
+		window.addEventListener('load', () => {
+			createFallingHearts();
+			createConfetti();
+		});
+	</script>
+</body>
+
+</html>
